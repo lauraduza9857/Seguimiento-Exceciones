@@ -54,17 +54,26 @@ public class Principal extends PApplet {
 				if (circulo.selected) {
 					listaColoresSeleccionar.get(i).seleccionarColor(circulo);
 				}
-
 			}
+			
 		} catch (Exception e) {
 			e.getMessage();
 		}
+	//	if (dist(mouseX, mouseY, 400, 250) < 70) { // cercanía
+			if (dist(mouseX, mouseY, 700, 450) < 35) { // cambio de color
+				cuadrado.setB(255);
+				
+			}
  
 		cuadrado.clicked();
 		circulo.clicked();
+		
+
+		
+		/* if(mouseX ) {
+			 cuadrado.setB(255)*/
 		// System.out.println("circ:" + circulo.selected + " "+"cuadr:" +
 		// cuadrado.selected);
 
 	}
-
 }
