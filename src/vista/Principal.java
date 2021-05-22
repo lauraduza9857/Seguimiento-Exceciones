@@ -13,15 +13,14 @@ public class Principal extends PApplet {
 	ArrayList<Cuadrado> listaColoresSeleccionar;
 	Cuadrado cuadrado;
 	Circulo circulo;
-	/*int colori = color(0);
-	private int x = 0 ;
-	private int y = 0;*/
+	boolean anuncio;
 
 	public void settings() {
 		size(1000, 600);
 	}
 
 	public void setup() {
+		anuncio = false;
 		listaColoresSeleccionar = new ArrayList<Cuadrado>();
 		cuadrado = new Cuadrado(width / 2 - 200, height / 2 - 100, 100, 100, this);
 		circulo = new Circulo(width / 2 + 200, height / 2 - 100, 100, 100, this);
@@ -40,13 +39,20 @@ public class Principal extends PApplet {
 		rectMode(CENTER);
 		strokeWeight(1);
 		stroke(0);
-		
 
 		for (int i = 0; i < listaColoresSeleccionar.size(); i++) {
 			listaColoresSeleccionar.get(i).pintar();
 		}
 		circulo.pintar();
 		cuadrado.pintar();
+		
+		if (anuncio == true) {
+			text("Hiciste match!", 450, 550);
+		}
+		if (anuncio == false) {
+			text("No hiciste match! Pinta las figuras del mismo color", 450, 550);
+		}
+		
 	}
 
 	public void mouseClicked() {
@@ -60,32 +66,34 @@ public class Principal extends PApplet {
 					listaColoresSeleccionar.get(i).seleccionarColor(circulo);
 				}
 			}
-			
+
 		} catch (Exception e) {
 			e.getMessage();
 		}
-		
-	//	 if (dist(x, y, 700, 450) < 70) { // cercanía
-			if (dist(mouseX, mouseY, 700, 450) < 35) { // cambio de color
-				cuadrado.setR(0);
-				cuadrado.setG(0);
-				cuadrado.setB(0);
-				
-				circulo.setR(0);
-				circulo.setG(0);
-				circulo.setB(0);
-				
+
+		if (dist(mouseX, mouseY, 700, 450) < 35) { // botón cambio de color
+			cuadrado.setR(0);
+			cuadrado.setG(0);
+			cuadrado.setB(0);
+
+			circulo.setR(0);
+			circulo.setG(0);
+			circulo.setB(0);
+
+		}
+		if (dist(mouseX, mouseY, 300, 450) < 35) { // botón comparar colores
+			if ((cuadrado.getR() == circulo.getR()) && (cuadrado.getG() == circulo.getG())
+					&& (cuadrado.getB() == circulo.getB())) {
+				anuncio = true;
+			}else {
+				anuncio = false;
 			}
- 
-		cuadrado.clicked();
-		circulo.clicked();
+		}
+		
 		
 
-		
-		/* if(mouseX ) {
-			 cuadrado.setB(255)*/
-		// System.out.println("circ:" + circulo.selected + " "+"cuadr:" +
-		// cuadrado.selected);
+		cuadrado.clicked();
+		circulo.clicked();
 
 	}
 }
