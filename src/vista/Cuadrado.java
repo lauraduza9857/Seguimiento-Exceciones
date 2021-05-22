@@ -4,14 +4,16 @@ import processing.core.PApplet;
 
 public class Cuadrado extends Figura{
 	
-	
 
-	public Cuadrado(int posX, int posY, int width, int height, PApplet app) {
+    public Cuadrado(int posX, int posY, int width, int height, PApplet app) {
 		super(posX, posY, width, height, app);
 	}
 	
 	public Cuadrado(int posX, int posY, int width, int height, PApplet app, int r, int g, int b) {
 		super(posX, posY, width, height, app, r, g ,b);
+		r=0;
+		g=0;
+		b=0;
 	}
 
 	public void pintar() {

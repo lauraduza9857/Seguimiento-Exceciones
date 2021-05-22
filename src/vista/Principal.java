@@ -13,6 +13,9 @@ public class Principal extends PApplet {
 	ArrayList<Cuadrado> listaColoresSeleccionar;
 	Cuadrado cuadrado;
 	Circulo circulo;
+	/*int colori = color(0);
+	private int x = 0 ;
+	private int y = 0;*/
 
 	public void settings() {
 		size(1000, 600);
@@ -61,9 +64,16 @@ public class Principal extends PApplet {
 		} catch (Exception e) {
 			e.getMessage();
 		}
-	//	if (dist(mouseX, mouseY, 400, 250) < 70) { // cercanía
+		
+	//	 if (dist(x, y, 700, 450) < 70) { // cercanía
 			if (dist(mouseX, mouseY, 700, 450) < 35) { // cambio de color
-				cuadrado.setB(255);
+				cuadrado.setR(0);
+				cuadrado.setG(0);
+				cuadrado.setB(0);
+				
+				circulo.setR(0);
+				circulo.setG(0);
+				circulo.setB(0);
 				
 			}
  
