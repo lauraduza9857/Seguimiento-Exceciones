@@ -13,14 +13,15 @@ public class Principal extends PApplet {
 	ArrayList<Cuadrado> listaColoresSeleccionar;
 	Cuadrado cuadrado;
 	Circulo circulo;
-	boolean anuncio;
+	boolean anuncioP, anuncioN;
 
 	public void settings() {
 		size(1000, 600);
 	}
 
 	public void setup() {
-		anuncio = false;
+		anuncioP = false; //anuncio positivo
+		anuncioN = false; //anuncio negativo
 		listaColoresSeleccionar = new ArrayList<Cuadrado>();
 		cuadrado = new Cuadrado(width / 2 - 200, height / 2 - 100, 100, 100, this);
 		circulo = new Circulo(width / 2 + 200, height / 2 - 100, 100, 100, this);
@@ -46,11 +47,15 @@ public class Principal extends PApplet {
 		circulo.pintar();
 		cuadrado.pintar();
 		
-		if (anuncio == true) {
+		if (anuncioP == true) {
+			fill(0);
+			textSize(15);
 			text("Hiciste match!", 450, 550);
 		}
-		if (anuncio == false) {
-			text("No hiciste match! Pinta las figuras del mismo color", 450, 550);
+		if (anuncioN == true) {
+			fill(0);
+			textSize(15);
+			text("No hiciste match! Pinta las figuras del mismo color", 350, 550);
 		}
 		
 	}
@@ -84,9 +89,12 @@ public class Principal extends PApplet {
 		if (dist(mouseX, mouseY, 300, 450) < 35) { // botón comparar colores
 			if ((cuadrado.getR() == circulo.getR()) && (cuadrado.getG() == circulo.getG())
 					&& (cuadrado.getB() == circulo.getB())) {
-				anuncio = true;
+				anuncioP = true;
+				anuncioN = false;
 			}else {
-				anuncio = false;
+				anuncioP= false;
+				anuncioN = true;
+				
 			}
 		}
 		
