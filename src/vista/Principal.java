@@ -31,11 +31,13 @@ public class Principal extends PApplet {
 
 	public void draw() {
 		background(255);
+		fill(0);
+		rect(300, 450, 200, 60); // comparar
+		rect(700, 450, 200, 60);// limpiar
 		rectMode(CENTER);
 		strokeWeight(1);
 		stroke(0);
-		rect(300, 450, 200, 60); // comparar
-		rect(700, 450, 200, 60);// limpiar
+		
 
 		for (int i = 0; i < listaColoresSeleccionar.size(); i++) {
 			listaColoresSeleccionar.get(i).pintar();
